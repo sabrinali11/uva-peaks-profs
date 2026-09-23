@@ -1,0 +1,235 @@
+:root {
+  --navy: #232D4B;
+  --orange: #E57200;
+  --blue: #3A6EA5;
+  --cream: #F5F1E8;
+  --ink: #18202A;
+  --muted: #667085;
+  --white: #FFFFFF;
+  --line: #DED8CD;
+  --forest: #28483A;
+  --max: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: #FAFAF7;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+button, input { font: inherit; }
+
+.site-header {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 max(24px, calc((100vw - var(--max))/2));
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,250,247,.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(35,45,75,.08);
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center;
+  color: var(--orange); background: var(--navy); border-radius: 50%;
+  padding: 8px;
+}
+.brand strong { display: block; font: 700 16px "Libre Franklin", sans-serif; letter-spacing: -.02em; }
+.brand small { display: block; margin-top: 2px; font-size: 11px; text-transform: uppercase; letter-spacing: .13em; color: var(--muted); }
+.site-nav { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 600; }
+.site-nav a:not(.nav-cta):hover { color: var(--orange); }
+.nav-cta { background: var(--navy); color: white; padding: 11px 17px; border-radius: 999px; }
+.menu-button { display:none; }
+
+.hero {
+  min-height: calc(100vh - 78px);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(35,45,75,.18), rgba(35,45,75,.04)),
+    radial-gradient(circle at 75% 25%, rgba(229,114,0,.25), transparent 25%),
+    linear-gradient(165deg, #9DB5C3 0 35%, #657D72 35% 54%, #31483E 54% 67%, #1E302B 67%);
+}
+.hero::before, .hero::after {
+  content:"";
+  position:absolute;
+  bottom:-8%;
+  width:70%;
+  height:60%;
+  background:#253C34;
+  clip-path: polygon(0 100%, 42% 20%, 55% 44%, 67% 17%, 100% 100%);
+}
+.hero::before { left:-12%; opacity:.9; }
+.hero::after { right:-25%; background:#1E302B; transform:scaleX(-1); }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(90deg, rgba(18,28,44,.72) 0%, rgba(18,28,44,.30) 52%, rgba(18,28,44,.05)); z-index:1; }
+.hero-content {
+  width: var(--max); max-width: calc(100% - 48px); margin: 0 auto;
+  padding: 110px 0 100px; position:relative; z-index:2; color:white;
+}
+.eyebrow, .section-kicker {
+  margin:0 0 16px; text-transform:uppercase; letter-spacing:.16em; font-size:12px; font-weight:700;
+}
+.eyebrow { color:#FFD9B0; }
+.hero h1 {
+  margin:0; max-width:850px; font:800 clamp(58px, 9vw, 118px)/.88 "Libre Franklin", sans-serif;
+  letter-spacing:-.065em;
+}
+.hero h1 span { color:#FFB35F; }
+.hero-copy { max-width:650px; margin:28px 0; font-size:18px; line-height:1.65; color:rgba(255,255,255,.88); }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.button {
+  display:inline-flex; justify-content:center; align-items:center; min-height:48px; padding:0 20px;
+  border:0; border-radius:999px; font-weight:700; cursor:pointer;
+}
+.button-primary { background:var(--orange); color:white; }
+.button-secondary { border:1px solid rgba(255,255,255,.5); color:white; background:rgba(255,255,255,.08); }
+.hero-card {
+  position:absolute; right:max(24px, calc((100vw - var(--max))/2)); bottom:46px; z-index:3;
+  display:flex; align-items:center; gap:12px; color:white; background:rgba(11,24,32,.55);
+  border:1px solid rgba(255,255,255,.22); backdrop-filter:blur(10px); padding:14px 18px; border-radius:14px;
+}
+.status-dot { width:10px; height:10px; border-radius:50%; background:#B6E37C; box-shadow:0 0 0 5px rgba(182,227,124,.15); }
+.mini-label { margin:0 0 2px; font-size:10px; text-transform:uppercase; letter-spacing:.12em; opacity:.7; }
+
+.section { max-width:var(--max); margin:0 auto; padding:100px 24px; }
+.intro { display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+.section-kicker { color:var(--orange); }
+.section-kicker.light { color:#FFC786; }
+h2 { margin:0; font:800 clamp(38px,5vw,64px)/1 "Libre Franklin",sans-serif; letter-spacing:-.045em; }
+.intro-copy { font-size:17px; line-height:1.75; color:#49525D; }
+.intro-copy p:first-child { margin-top:0; }
+.text-link { display:inline-block; margin-top:12px; font-weight:700; color:var(--navy); border-bottom:2px solid var(--orange); padding-bottom:3px; }
+
+.stats-strip {
+  max-width:var(--max); margin:0 auto 40px; padding:0 24px 70px;
+  display:grid; grid-template-columns:repeat(4,1fr);
+}
+.stats-strip article { border-left:1px solid var(--line); padding:4px 24px; }
+.stats-strip strong { display:block; font-size:20px; color:var(--navy); }
+.stats-strip span { color:var(--muted); font-size:13px; }
+
+.trips-section { padding-top:70px; }
+.section-heading { display:flex; justify-content:space-between; gap:30px; align-items:flex-end; margin-bottom:36px; }
+.section-note { max-width:330px; margin:0; color:var(--muted); }
+.card-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.trip-card { background:white; border:1px solid #E9E4DA; border-radius:18px; overflow:hidden; box-shadow:0 10px 30px rgba(35,45,75,.06); }
+.trip-image { height:260px; position:relative; overflow:hidden; }
+.trip-image::before, .trip-image::after {
+  content:""; position:absolute; left:-10%; right:-10%; bottom:-5%; height:80%;
+  clip-path:polygon(0 100%, 24% 46%, 40% 68%, 56% 20%, 75% 58%, 100% 27%, 100% 100%);
+}
+.trip-image-1 { background:linear-gradient(#A7CBD5,#E4D5A8); }
+.trip-image-1::before { background:#627C55; }
+.trip-image-1::after { background:#324B38; height:57%; transform:translateY(22px); }
+.trip-image-2 { background:linear-gradient(#ACC9DA,#F1C78E); }
+.trip-image-2::before { background:#6F7550; }
+.trip-image-2::after { background:#3C4C39; height:50%; }
+.trip-image-3 { background:linear-gradient(#C7D7D1,#E2B97A); }
+.trip-image-3::before { background:#8D6848; }
+.trip-image-3::after { background:#38493B; height:54%; }
+.difficulty { position:absolute; z-index:2; top:16px; left:16px; background:rgba(255,255,255,.9); padding:7px 10px; border-radius:999px; font-size:11px; font-weight:700; }
+.trip-body { padding:24px; }
+.trip-date { margin:0 0 8px; color:var(--orange); font-size:12px; text-transform:uppercase; letter-spacing:.12em; font-weight:700; }
+.trip-body h3 { margin:0 0 10px; font:700 26px "Libre Franklin",sans-serif; color:var(--navy); }
+.trip-body > p:not(.trip-date) { color:#5B6470; line-height:1.6; min-height:76px; }
+.trip-meta { padding-top:17px; border-top:1px solid #EEEAE2; display:flex; justify-content:space-between; gap:12px; font-size:12px; color:#68717A; }
+.fine-print { margin-top:18px; color:#8A8F95; font-size:12px; }
+
+.feature-band { display:grid; grid-template-columns:1fr 1fr; min-height:650px; background:var(--navy); color:white; }
+.feature-photo {
+  min-height:540px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(229,114,0,.45), transparent 18%),
+    linear-gradient(165deg,#91AFB0 0 38%,#557062 38% 57%,#354E42 57% 73%,#21372F 73%);
+  position:relative; overflow:hidden;
+}
+.feature-photo::after {
+  content:""; position:absolute; inset:auto -10% 0 -10%; height:70%; background:#22392F;
+  clip-path:polygon(0 100%,15% 66%,31% 78%,47% 18%,62% 62%,78% 35%,100% 80%,100% 100%);
+}
+.feature-copy { padding:90px clamp(35px,7vw,100px); display:flex; flex-direction:column; justify-content:center; }
+.feature-copy p:not(.section-kicker) { max-width:540px; color:rgba(255,255,255,.76); line-height:1.7; font-size:17px; }
+.feature-list { display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; margin-top:24px; padding-top:26px; border-top:1px solid rgba(255,255,255,.18); color:#F8D8B5; font-size:13px; }
+
+.team-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.person { background:#F3EFE6; padding:24px; border-radius:16px; }
+.avatar { width:100%; aspect-ratio:1; background:linear-gradient(145deg,#D8CFC0,#9BAA9B); border-radius:12px; display:grid; place-items:center; font:800 42px "Libre Franklin"; color:white; margin-bottom:20px; }
+.person h3 { margin:0 0 4px; font-size:17px; }
+.person p { margin:0; color:var(--muted); font-size:13px; }
+
+.faq-section { display:grid; grid-template-columns:.8fr 1.2fr; gap:90px; }
+.accordion details { border-top:1px solid var(--line); padding:22px 0; }
+.accordion details:last-child { border-bottom:1px solid var(--line); }
+.accordion summary { cursor:pointer; font-weight:700; list-style:none; display:flex; justify-content:space-between; }
+.accordion summary::after { content:"+"; color:var(--orange); font-size:22px; }
+.accordion details[open] summary::after { content:"–"; }
+.accordion p { color:var(--muted); line-height:1.65; max-width:680px; }
+
+.join-section {
+  max-width:var(--max); margin:0 auto 70px; border-radius:24px; background:var(--forest); color:white;
+  padding:70px; display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;
+}
+.join-section > div > p:not(.section-kicker) { color:rgba(255,255,255,.75); line-height:1.65; }
+.signup-form { display:grid; gap:14px; }
+.signup-form label span { display:block; margin-bottom:6px; font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:#D9E5DD; }
+.signup-form input { width:100%; border:1px solid rgba(255,255,255,.28); background:rgba(255,255,255,.08); color:white; padding:14px 15px; border-radius:10px; outline:none; }
+.signup-form input::placeholder { color:rgba(255,255,255,.45); }
+.signup-form input:focus { border-color:#FFC786; }
+.button-light { background:white; color:var(--forest); }
+.form-message { margin:0; min-height:20px; color:#D5EFC7; font-size:13px; }
+
+footer {
+  max-width:var(--max); margin:0 auto; padding:35px 24px 55px; border-top:1px solid var(--line);
+  display:grid; grid-template-columns:1fr auto; gap:20px; color:#5C6570; font-size:13px;
+}
+footer strong { color:var(--navy); font-size:15px; }
+footer p { margin:6px 0 0; }
+.footer-links { display:flex; gap:22px; }
+.footer-note { grid-column:1/-1; color:#969A9F; }
+
+@media (max-width: 850px) {
+  .site-header { padding:0 18px; }
+  .menu-button { display:block; border:0; background:var(--navy); color:white; padding:9px 12px; border-radius:999px; }
+  .site-nav {
+    display:none; position:absolute; top:70px; left:16px; right:16px; background:white; padding:18px;
+    border:1px solid #E6E1D7; border-radius:14px; box-shadow:0 15px 35px rgba(0,0,0,.12);
+    flex-direction:column; align-items:stretch; gap:8px;
+  }
+  .site-nav.open { display:flex; }
+  .site-nav a { padding:10px; }
+  .hero-content { padding-bottom:135px; }
+  .hero-card { left:24px; right:auto; bottom:25px; }
+  .intro, .faq-section, .join-section, .feature-band { grid-template-columns:1fr; }
+  .intro { gap:35px; }
+  .stats-strip { grid-template-columns:1fr 1fr; row-gap:28px; }
+  .card-grid { grid-template-columns:1fr; }
+  .trip-body > p:not(.trip-date) { min-height:0; }
+  .feature-photo { min-height:420px; }
+  .team-grid { grid-template-columns:1fr 1fr; }
+  .join-section { margin:0 18px 50px; padding:44px 28px; gap:35px; }
+  footer { grid-template-columns:1fr; }
+  .footer-note { grid-column:auto; }
+}
+
+@media (max-width: 520px) {
+  .brand small { display:none; }
+  .hero h1 { font-size:56px; }
+  .section { padding:75px 20px; }
+  .stats-strip { grid-template-columns:1fr; }
+  .stats-strip article { padding:8px 20px; }
+  .team-grid { grid-template-columns:1fr 1fr; gap:10px; }
+  .person { padding:12px; }
+  .person h3 { font-size:14px; }
+  .feature-copy { padding:65px 24px; }
+  .join-section { border-radius:16px; }
+}
